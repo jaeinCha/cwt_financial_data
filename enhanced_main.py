@@ -222,7 +222,7 @@ def analyze_sp500_with_reduced_edge_effects(time, data, output_dir="results"):
     
     # 8. Plot jump detection comparison
     plt.figure(figsize=(12, 6))
-    plt.plot(time, data, 'b-', alpha=0.7)
+    # plt.plot(time, data, 'b-', alpha=0.7)
     
     # # Plot regular jumps (original method)
     # regular_times = []
@@ -237,6 +237,8 @@ def analyze_sp500_with_reduced_edge_effects(time, data, output_dir="results"):
         idx = jump['indices']
         enhanced_times.extend([time[i+1] for i in idx])  # +1 for returns offset
         plt.plot([time[i+1] for i in idx], [data[i+1] for i in idx], 'ro', markersize=8, alpha=0.5, label='Detected Jump')
+    
+    plt.plot(time, data, 'b-', alpha=0.7)
     
     # Create custom legend without duplicates
     from matplotlib.lines import Line2D
